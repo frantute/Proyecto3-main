@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6257209182408698713}
   - component: {fileID: 384896123434731093}
   - component: {fileID: 8519935334814259323}
+  - component: {fileID: 3426170157850596495}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Jeringa
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,6 +97,19 @@ MonoBehaviour:
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 512
+--- !u!65 &3426170157850596495
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728981422968892133}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.4113016, y: 3.6902118, z: 3.4113019}
+  m_Center: {x: 0.000000059604645, y: 0.35197705, z: 0}
 --- !u!1 &982791857958832577
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     public float speed;
     public float lifeTime;
     public int bulletDamage;
-    bool colision = false;
+
     public LayerMask whatIsEnemies;
     void Start()
     {
@@ -17,22 +17,21 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         transform.position += transform.up * speed;
-        
-        if (colision == true)
-        {
-            RecibirDaño();
-        }
+       
     }
     
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.collider.CompareTag("Enemy"))
+        Enemigo enemigo = collision.gameObject.GetComponent<Enemigo>();
+        if (enemigo)
         {
-            RecibirDaño();
+            enemigo.TakeDamage(25);
+            Debug.Log("Hace Daño");
         }
+        Debug.Log("Pega la bala");
     }
 
-    private void RecibirDaño()
+    private void BombDamage()
     {
         Collider[] enemies = Physics.OverlapSphere(transform.position, whatIsEnemies);
 

@@ -44,17 +44,17 @@ public class Gun : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0) && currcooldown <= 0 && currReloadTime >= reloadTime )
         {
-            Debug.Log("Click");
+
             if (currentAmo > 0)
             {
               DistaraYDescuentaBalas();
-                Debug.Log("Dispara desde Update quedan " + currentAmo);
+
             }
             else
             {
                 Recargar();
                 
-                Debug.Log("Recarga desde Update");
+
 
             }
         }
@@ -80,7 +80,6 @@ public class Gun : MonoBehaviour
     {
         int balasfaltantes = cargador - currentAmo;
         if (MaxAmo < balasfaltantes){
-            Debug.Log("No quedan mas balas en la reserva");
         }
         else
         {
