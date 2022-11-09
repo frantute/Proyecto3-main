@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     public LayerMask whatIsEnemies;
     void Start()
     {
-        Destroy(gameObject, lifeTime);
+        Destroy(transform.parent.gameObject, lifeTime);
     }
 
     private void Update()
@@ -25,7 +25,8 @@ public class Bullet : MonoBehaviour
         Enemigo enemigo = collision.gameObject.GetComponent<Enemigo>();
         if (enemigo)
         {
-            enemigo.TakeDamage(25);
+            enemigo.TakeDamage(5);
+            Destroy(transform.parent.gameObject);
             Debug.Log("Hace Daño");
         }
         Debug.Log("Pega la bala");

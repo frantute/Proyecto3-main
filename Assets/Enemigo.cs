@@ -15,7 +15,7 @@ public class Enemigo : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        StartCoroutine(Esperar());
+        StartCoroutine(Esperar(3));
     }
 
     // Update is called once per frame
@@ -32,6 +32,11 @@ public class Enemigo : MonoBehaviour
         {
             Invoke(nameof(DestroyEnemy), 0.2f);
         }
+        else
+        {
+            animator.SetTrigger("Hit");
+            StartCoroutine(Esperar(1));
+        }
     }
 
     private void DestroyEnemy()
@@ -46,14 +51,15 @@ public class Enemigo : MonoBehaviour
         {
             Debug.Log("Zombie toca al player");
             animator.SetTrigger("Pegar");
+            
         }
     }
 
-    IEnumerator Esperar()
+    IEnumerator Esperar(float time)
     {
         Debug.Log("spawnea");
         agent.speed = 0;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(time);
         Debug.Log("termino spawn");
         agent.speed = 3.5f;
 
