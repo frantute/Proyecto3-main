@@ -25,11 +25,11 @@ public class Bullet : MonoBehaviour
         Enemigo enemigo = collision.gameObject.GetComponent<Enemigo>();
         if (enemigo)
         {
-            enemigo.TakeDamage(5);
+            enemigo.TakeDamage(20);
             Destroy(transform.parent.gameObject);
-            Debug.Log("Hace Daño");
+            
         }
-        Debug.Log("Pega la bala");
+       
     }
 
     private void BombDamage()

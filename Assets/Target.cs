@@ -11,6 +11,7 @@ public class Target : MonoBehaviour
 
     void Start()
     {
+        targetTR = GameObject.FindGameObjectWithTag("Player").transform;
         agente = GetComponent<NavMeshAgent>();
     }
     void Update()

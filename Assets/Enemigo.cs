@@ -9,6 +9,7 @@ public class Enemigo : MonoBehaviour
     int enemyCount = 0;
     public NavMeshAgent agent;
     public Animator animator;
+    public PuntosPlayer puntosplayerscript;
 
     public bool spawneando = true;
     // Start is called before the first frame update
@@ -16,6 +17,7 @@ public class Enemigo : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(Esperar(3));
+        puntosplayerscript = FindObjectOfType<PuntosPlayer>();
     }
 
     // Update is called once per frame
@@ -31,11 +33,13 @@ public class Enemigo : MonoBehaviour
         if (enemyHealth <= 0)
         {
             Invoke(nameof(DestroyEnemy), 0.2f);
+            puntosplayerscript.SumarPuntos(50);
         }
         else
         {
             animator.SetTrigger("Hit");
-            StartCoroutine(Esperar(1));
+            StartCoroutine(Esperar(1    ));
+            puntosplayerscript.SumarPuntos(10);
         }
     }
 
@@ -49,7 +53,7 @@ public class Enemigo : MonoBehaviour
     {
         if (col.gameObject.name == "FPSController")
         {
-            Debug.Log("Zombie toca al player");
+            
             animator.SetTrigger("Pegar");
             
         }
@@ -57,10 +61,10 @@ public class Enemigo : MonoBehaviour
 
     IEnumerator Esperar(float time)
     {
-        Debug.Log("spawnea");
+        
         agent.speed = 0;
         yield return new WaitForSeconds(time);
-        Debug.Log("termino spawn");
+        
         agent.speed = 3.5f;
 
     }
